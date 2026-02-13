@@ -33,8 +33,4 @@ public class AcmeBankController {
                 .content();
     }
 
-    @GetMapping("/joke")
-    public ChatResponse joke() {
-        return chatClient.prompt().user("tell me a joke about the Ai ").call().chatResponse();
-    }
 }
