@@ -1,4 +1,4 @@
-package dev.kumar.Spring_ai.multimodal;
+package dev.kumar.Spring_ai.multimodal.image;
 
 
 import org.springframework.ai.chat.client.ChatClient;
