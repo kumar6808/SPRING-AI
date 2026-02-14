@@ -1,0 +1,134 @@
+{
+  "models": [
+    {
+      "company": "OpenAI",
+      "model": "GPT-5.2",
+      "context_window_size": "400k tokens"
+    },
+    {
+      "company": "Google DeepMind",
+      "model": "Gemini 1.5 Pro",
+      "context_window_size": "1M tokens"
+    },
+    {
+      "company": "Anthropic",
+      "model": "Claude 3.5 Opus",
+      "context_window_size": "200k tokens"
+    },
+    {
+      "company": "Anthropic",
+      "model": "Claude 3.5 Sonnet",
+      "context_window_size": "200k tokens"
+    },
+    {
+      "company": "Meta",
+      "model": "LLaMA 3",
+      "context_window_size": "8k tokens"
+    },
+    {
+      "company": "Alibaba",
+      "model": "Qwen 2.5",
+      "context_window_size": "128k tokens"
+    },
+    {
+      "company": "Mistral AI",
+      "model": "Mistral Large",
+      "context_window_size": "128k tokens"
+    },
+    {
+      "company": "Mistral AI",
+      "model": "Mixtral 8x22B",
+      "context_window_size": "64k tokens"
+    },
+    {
+      "company": "Cohere",
+      "model": "Command R+",
+      "context_window_size": "128k tokens"
+    },
+    {
+      "company": "Cohere",
+      "model": "Command R",
+      "context_window_size": "128k tokens"
+    },
+    {
+      "company": "Amazon",
+      "model": "Titan Text Premier",
+      "context_window_size": "32k tokens"
+    },
+    {
+      "company": "Amazon",
+      "model": "Titan Text Express",
+      "context_window_size": "8k tokens"
+    },
+    {
+      "company": "xAI",
+      "model": "Grok-2",
+      "context_window_size": "128k tokens"
+    },
+    {
+      "company": "xAI",
+      "model": "Grok-1.5",
+      "context_window_size": "128k tokens"
+    },
+    {
+      "company": "Meta",
+      "model": "LLaMA 3.1 70B",
+      "context_window_size": "128k tokens"
+    },
+    {
+      "company": "Meta",
+      "model": "LLaMA 3.1 8B",
+      "context_window_size": "128k tokens"
+    },
+    {
+      "company": "DeepSeek",
+      "model": "DeepSeek-V2",
+      "context_window_size": "128k tokens"
+    },
+    {
+      "company": "DeepSeek",
+      "model": "DeepSeek-Coder V2",
+      "context_window_size": "128k tokens"
+    },
+    {
+      "company": "AI21 Labs",
+      "model": "Jamba-Instruct",
+      "context_window_size": "256k tokens"
+    },
+    {
+      "company": "AI21 Labs",
+      "model": "Jurassic-2 Ultra",
+      "context_window_size": "8k tokens"
+    },
+    {
+      "company": "Databricks",
+      "model": "DBRX Instruct",
+      "context_window_size": "32k tokens"
+    },
+    {
+      "company": "NVIDIA",
+      "model": "Nemotron-4 340B",
+      "context_window_size": "8k tokens"
+    },
+    {
+      "company": "IBM",
+      "model": "Granite 20B Instruct",
+      "context_window_size": "8k tokens"
+    },
+    {
+      "company": "Stability AI",
+      "model": "Stable LM 2",
+      "context_window_size": "8k tokens"
+    },
+    {
+      "company": "01.AI",
+      "model": "Yi-Large",
+      "context_window_size": "200k tokens"
+    },
+    {
+      "company": "Baidu",
+      "model": "ERNIE 4.0",
+      "context_window_size": "32k tokens"
+    }
+  ]
+}
