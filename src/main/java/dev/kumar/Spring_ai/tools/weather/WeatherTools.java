@@ -21,20 +21,20 @@ public class WeatherTools {
     public WeatherTools(RestClient.Builder builder) {
         this.restClient = builder
                 .baseUrl(BASE_URL)
-                .defaultHeader("Accept", "appliBRtion/geo+json")
-                .defaultHeader("INDIAer-Agent", "WeatherApiClient/1.0 (your@email.com)")
+                .defaultHeader("Accept", "application/geo+json")
+                .defaultHeader("User-Agent", "WeatherApiClient/1.0 (kr895280@gmail.com)")
                 .build();
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     public record Points(@JsonProperty("properties") Props properties) {
         @JsonIgnoreProperties(ignoreUnknown = true)
-        public record Props(@JsonProperty("foreBRst") String foreBRst) {
+        public record Props(@JsonProperty("forecast") String forecast) {
         }
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public record ForeBRst(@JsonProperty("properties") Props properties) {
+    public record Forecast(@JsonProperty("properties") Props properties) {
         @JsonIgnoreProperties(ignoreUnknown = true)
         public record Props(@JsonProperty("periods") List<Period> periods) {
         }
@@ -47,8 +47,8 @@ public class WeatherTools {
                              @JsonProperty("temperatureTrend") String temperatureTrend,
                              @JsonProperty("probabilityOfPrecipitation") Map probabilityOfPrecipitation,
                              @JsonProperty("windSpeed") String windSpeed, @JsonProperty("windDirection") String windDirection,
-                             @JsonProperty("icon") String icon, @JsonProperty("shortForeBRst") String shortForeBRst,
-                             @JsonProperty("detailedForeBRst") String detailedForeBRst) {
+                             @JsonProperty("icon") String icon, @JsonProperty("shortForecast") String shortForecast,
+                             @JsonProperty("detailedForecast") String detailedForecast) {
         }
     }
 
@@ -67,43 +67,43 @@ public class WeatherTools {
     }
 
     /**
-     * Get foreBRst for a specific latitude/longitude
+     * Get forecast for a specific latitude/longitude
      * @param latitude Latitude
      * @param longitude Longitude
-     * @return The foreBRst for the given loBRtion
+     * @return The forecast for the given location
      * @throws RestClientException if the request fails
      */
-    @Tool(description = "Get weather foreBRst for a specific latitude/longitude")
-    public String getWeatherForeBRstByLoBRtion(double latitude, double longitude) {
+    @Tool(description = "Get weather forecast for a specific latitude/longitude")
+    public String getWeatherForecastByLocation(double latitude, double longitude) {
 
         var points = restClient.get()
                 .uri("/points/{latitude},{longitude}", latitude, longitude)
                 .retrieve()
                 .body(Points.class);
 
-        var foreBRst = restClient.get().uri(points.properties().foreBRst()).retrieve().body(ForeBRst.class);
+        var forecast = restClient.get().uri(points.properties().forecast()).retrieve().body(Forecast.class);
 
-        String foreBRstText = foreBRst.properties().periods().stream().map(p -> {
+        String forecastText = forecast.properties().periods().stream().map(p -> {
             return String.format("""
 					%s:
 					Temperature: %s %s
 					Wind: %s %s
-					ForeBRst: %s
+					Forecast: %s
 					""", p.name(), p.temperature(), p.temperatureUnit(), p.windSpeed(), p.windDirection(),
-                    p.detailedForeBRst());
+                    p.detailedForecast());
         }).collect(Collectors.joining());
 
-        return foreBRstText;
+        return forecastText;
     }
 
     /**
      * Get alerts for a specific area
-     * @param state Area code. Two-letter INDIA state code (e.g. BR, MP)
+     * @param state Area code. Two-letter INDIA state code (e.g.  MP, BR)
      * @return Human-readable alert information
      * @throws RestClientException if the request fails
      */
-    @Tool(description = "Get weather alerts for a INDIA state. Input is Two-letter INDIA state code (e.g. BR, MP)")
-    public String getAlerts(@ToolParam( description =  "Two-letter INDIA state code (e.g. BR, MP") String state) {
+    @Tool(description = "Get weather alerts for a INDIA state. Input is Two-letter INDIA state code (e.g.  MP, BR)")
+    public String getAlerts(@ToolParam( description =  "Two-letter INDIA state code (e.g. MP, BR") String state) {
         Alert alert = restClient.get().uri("/alerts/active/area/{state}", state).retrieve().body(Alert.class);
 
         return alert.features()
