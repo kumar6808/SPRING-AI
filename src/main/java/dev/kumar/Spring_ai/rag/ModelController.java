@@ -32,9 +32,6 @@ public class ModelController {
 
 
         this.chatClient = builder.build();
-//                .defaultAdvisors(new QuestionAnswerAdvisor(vectorStore))
-//                .searchRequest(SearchRequest.builder().build())
-//                .build();
     }
 
     @GetMapping("/rag/models")
@@ -43,8 +40,6 @@ public class ModelController {
                     "their  context window") String message) {
         return chatClient.prompt()
                 .user(message)
-//                .advisors(ragAdvisor)
-                // .advisor(new QuestionAnswerAdvisor(vectorStore))
                 .call()
                 .entity(Models.class);
 
